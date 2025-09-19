@@ -16,10 +16,10 @@ class DatabasePersistence:
 
     @contextmanager
     def _database_connect(self):
-        if os.environ.get('FLASH_ENV') == 'production':
+        if os.environ.get('FLASK_ENV') == 'production':
             connection = psycopg2.connect(os.environ['DATABASE_URL'])
         else:
-            connection = psycopg2.connect(dbname='todos')
+            connection = psycopg2.connect(dbname="todos")
 
         try:
             with connection:
